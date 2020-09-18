@@ -1,0 +1,143 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$md-maincolor: (
+  50 : #ffede0,
+  100 : #ffd1b3,
+  200 : #ffb380,
+  300 : #ff944d,
+  400 : #ff7d26,
+  500 : #ff6600,
+  600 : #ff5e00,
+  700 : #ff5300,
+  800 : #ff4900,
+  900 : #ff3800,
+  A100 : #ffffff,
+  A200 : #fff4f2,
+  A400 : #ffc9bf,
+  A700 : #ffb4a6,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$md-secondcolor: (
+  50 : #fcfcfc,
+  100 : #f8f8f8,
+  200 : #f3f3f3,
+  300 : #eeeeee,
+  400 : #eaeaea,
+  500 : #e6e6e6,
+  600 : #e3e3e3,
+  700 : #dfdfdf,
+  800 : #dbdbdb,
+  900 : #d5d5d5,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$md-migigreen: (
+  50 : #e0f0e8,
+  100 : #b3d9c5,
+  200 : #80c09e,
+  300 : #4da677,
+  400 : #26935a,
+  500 : #00803d,
+  600 : #007837,
+  700 : #006d2f,
+  800 : #006327,
+  900 : #00501a,
+  A100 : #83ff9e,
+  A200 : #50ff76,
+  A400 : #1dff4e,
+  A700 : #03ff3a,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$md-errorred: (
+  50 : #fbe7e7,
+  100 : #f5c4c4,
+  200 : #ef9c9d,
+  300 : #e97476,
+  400 : #e45758,
+  500 : #df393b,
+  600 : #db3335,
+  700 : #d72c2d,
+  800 : #d22426,
+  900 : #ca1719,
+  A100 : #fffcfc,
+  A200 : #ffc9ca,
+  A400 : #ff9697,
+  A700 : #ff7d7e,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$tidyroof-primary: mat-palette($md-maincolor);
+$tidyroof-accent:  mat-palette($md-secondcolor, 500, 900, A100);
+$tidyroof-warn:    mat-palette($md-errorred);
+
+$tidyroom-theme: mat-light-theme($tidyroof-primary, $tidyroof-accent, $tidyroof-warn);
+
+@include angular-material-theme($tidyroom-theme);
