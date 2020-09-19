@@ -1,17 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './pages/home/home.component';
 import {ProductsListComponent} from './pages/products-list/products-list.component';
 import {ProductsComponent} from './pages/products/products.component';
 import {ScannerComponent} from './pages/scanner/scanner.component';
-import {SettingsComponent} from "./pages/settings/settings.component";
+import {SettingsComponent} from './pages/settings/settings.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent, pathMatch: 'full'
   },
   {
-    path: 'product/:productId', component: ProductsComponent
+    path: 'product/:productId', component: ProductsComponent, data: {type: 'id'}
+  },
+  {
+    path: 'product/gtin/:productId', component: ProductsComponent, data: {type: 'gtin'}
   },
   {
     path: 'products-list', component: ProductsListComponent
