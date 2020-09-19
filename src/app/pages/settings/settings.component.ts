@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-settings',
@@ -15,6 +16,16 @@ export class SettingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const allergensTemp = localStorage.getItem(environment.allergens);
+    if (allergensTemp) {
+      this.allergens.setValue(JSON.parse(allergensTemp));
+    }
+    this.onChange();
   }
 
+  onChange() {
+    this.allergens.valueChanges.subscribe( () => {
+      localStorage.setItem(environment.allergens, JSON.stringify(this.allergens.value));
+    });
+  }
 }

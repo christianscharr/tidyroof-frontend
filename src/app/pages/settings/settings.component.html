@@ -10,10 +10,10 @@
         <mat-select-trigger>
           {{allergens.value ? allergens.value[0] : ''}}
           <span *ngIf="allergens.value?.length > 1" class="example-additional-selection">
-        (+{{allergens.value.length - 1}} {{allergens.value?.length === 2 ? 'other' : 'others'}})
-      </span>
+            (+{{allergens.value.length - 1}} {{allergens.value?.length === 2 ? 'other' : 'others'}})
+          </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let topping of allergenList" [value]="topping">{{topping}}</mat-option>
+        <mat-option *ngFor="let allergen of allergenList" [value]="allergen">{{allergen}}</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-card-content>
