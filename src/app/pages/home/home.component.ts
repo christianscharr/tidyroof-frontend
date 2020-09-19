@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     private httpClient: HttpClient,
     private productService: ProductService,
     private router: Router,
-    private pwaService: PwaService) {
+    public pwaService: PwaService) {
   }
 
   ngOnInit(): void {
