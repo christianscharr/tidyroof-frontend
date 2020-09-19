@@ -49,6 +49,7 @@
     margin-top: 30px;
     background-color: #ffffff3b;
     padding: 8px;
+    width: 190px;
     border: 5px solid black;
     border-radius: 5px;
 
@@ -60,6 +61,8 @@
 
     i {
       font-size: 130px;
+      display: block;
+      text-align: center;
     }
   }
 }
