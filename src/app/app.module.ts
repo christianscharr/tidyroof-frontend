@@ -1,8 +1,7 @@
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {WebcamModule} from 'ngx-webcam';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MaterialModule} from './material/material.module';
@@ -32,7 +31,7 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    WebcamModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
