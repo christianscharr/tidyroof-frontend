@@ -1,0 +1,25 @@
+<oho-navbar></oho-navbar>
+<div class="img-wrapper">
+  <img [src]="product.image" alt="">
+  <div class="information">
+    <span class="price">{{ product.price.toFixed(2) }} Fr.</span>
+    <h1>{{ product.name }}</h1>
+    <h2>{{ product.description }}</h2>
+    <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product.ingredients }}</p></span>
+    <div class="allergens">
+      <div *ngIf="product.allergens.length > 0; else noAllergens">
+        <p *ngFor="let allergen of product.allergens">{{ allergen.name }}</p>
+      </div>
+      <ng-template #noAllergens>
+        <div style="margin-right: 10px;">
+          <p>Dieses Produkt hat keine Allergene. Falls Sie eine Allergie haben, dann müssen Sie sich keine sorgen machen.</p>
+        </div>
+      </ng-template>
+      <i class="fal fa-allergies"></i>
+    </div>
+    <div class="categories">
+      <i class="fal fa-bookmark"></i>
+
+    </div>
+  </div>
+</div>

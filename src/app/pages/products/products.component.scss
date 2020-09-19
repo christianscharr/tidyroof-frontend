@@ -1,0 +1,100 @@
+.img-wrapper {
+  margin-top: 80px;
+  width: 100%;
+  height: 400px;
+
+  img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+  }
+
+  .information {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    .price {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    h1 {
+      color: #ff4900;
+      margin-block-end: 5px;
+    }
+
+    .ingredients {
+      display: flex;
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: " ";
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: hsla(0, 0%, 18%, 0.05);
+      }
+
+      p {
+        display: inline-block;
+      }
+    }
+
+    .allergens {
+      margin-top: 16px;
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+
+      &:after {
+        position: absolute;
+        content: " ";
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: hsla(0, 0%, 18%, 0.05);
+      }
+
+      i {
+        margin-bottom: 16px;
+      }
+
+      p {
+        display: inline-block;
+        margin-block-end: 0;
+      }
+    }
+
+    .categories {
+      margin-top: 16px;
+      display: flex;
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: " ";
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: hsla(0, 0%, 18%, 0.05);
+      }
+
+      i {
+        margin-bottom: 16px;
+      }
+    }
+
+    i {
+      font-size: 2.5rem;
+      margin-right: 10px;
+      color: #ff4900;
+    }
+  }
+
+}
