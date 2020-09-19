@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {Product} from "../types/migros-product.type";
+import {Product} from '../types/migros-product.type';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ProductService {
     if (!allergensString) {
       allergens = [];
     } else {
-      allergens = JSON.parse(allergensString).map(allergen => this.allergensMap[allergen])
+      allergens = JSON.parse(allergensString).map(allergen => this.allergensMap[allergen]);
     }
     return this.http.post(environment.apiUrl + `/product/recommended`, {id: id, allergens}).toPromise();
   }
@@ -34,8 +34,10 @@ export class ProductService {
     'Nüsse': 'ALLG_NUESSE',
     'Gluten': 'ALLG_GLUTEN',
     'Eier': 'ALLG_EIER'
+  };
+
+
+  async getProductByGtin(gtin: string) {
+    return await this.http.get<Product>(environment.apiUrl + `/product/gtin/${gtin}`).toPromise();
   }
-
-
-
 }
