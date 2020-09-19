@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "tidyroof-frontend"
+  "defaultProject": "tidyroof-frontend",
+  "cli": {
+    "analytics": "1a0913c6-d0a6-4f30-a77c-d8cce39cd831"
+  }
 }
