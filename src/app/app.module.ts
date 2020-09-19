@@ -13,6 +13,8 @@ import { NavOverlayComponent } from './components/nav-overlay/nav-overlay.compon
 import { environment } from '../environments/environment';
 import {HttpClientModule} from "@angular/common/http";
 import { ProductsComponent } from './pages/products/products.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ProductsListComponent } from './pages/products-list/products-list.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ProductsComponent } from './pages/products/products.component';
     HomeComponent,
     NavbarComponent,
     NavOverlayComponent,
-    ProductsComponent
+    ProductsComponent,
+    SettingsComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,

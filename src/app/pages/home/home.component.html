@@ -4,13 +4,11 @@
     <p>ah to oho in a few clicks - en Guete zäme</p>
   </div>
 
-  <form action="" class="camera">
-    <input type="file" accept="image/*;capture=camera" id="file" style="visibility: hidden">
-    <label for="file" >
+    <input type="file" name="file" accept="image/*;capture=camera" (change)="handleFileInput($event.target.files)" id="file" style="visibility: hidden">
+    <label for="file" class="camera" >
       <i class="fal fa-camera"></i>
       <p>press to scan</p>
     </label>
-  </form>
 
 
   <div class="navigation">
