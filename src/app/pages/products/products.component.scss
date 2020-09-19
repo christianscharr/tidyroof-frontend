@@ -60,13 +60,9 @@
         background-color: hsla(0, 0%, 18%, 0.05);
       }
 
-      i {
-        margin-bottom: 16px;
-      }
-
       p {
+        text-align: right;
         display: inline-block;
-        margin-block-end: 0;
       }
     }
 
@@ -85,8 +81,16 @@
         background-color: hsla(0, 0%, 18%, 0.05);
       }
 
-      i {
-        margin-bottom: 16px;
+      .cat {
+        p:last-of-type {
+          margin-bottom: 16px;
+        }
+      }
+
+      p {
+        margin-right: 15px;
+        display: inline-block;
+        margin-block-end: 0;
       }
     }
 

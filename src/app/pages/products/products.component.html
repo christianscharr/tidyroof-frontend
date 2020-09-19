@@ -7,8 +7,8 @@
     <h2>{{ product.description }}</h2>
     <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product.ingredients }}</p></span>
     <div class="allergens">
-      <div *ngIf="product.allergens.length > 0; else noAllergens">
-        <p *ngFor="let allergen of product.allergens">{{ allergen.name }}</p>
+      <div *ngIf="product.allergenText; else noAllergens">
+        <p >{{ product.allergenText }}</p>
       </div>
       <ng-template #noAllergens>
         <div style="margin-right: 10px;">
@@ -19,7 +19,9 @@
     </div>
     <div class="categories">
       <i class="fal fa-bookmark"></i>
-
+      <div class="cat">
+        <p *ngFor="let category of product.categories">{{ category.name }}</p>
+      </div>
     </div>
   </div>
 </div>
