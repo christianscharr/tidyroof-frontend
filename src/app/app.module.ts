@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavOverlayComponent } from './components/nav-overlay/nav-overlay.component';
 import { CameraCaptureComponent } from './components/camera-capture/camera-capture.component';
 import { environment } from '../environments/environment';
+import { CameraComponent } from './pages/camera/camera.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     NavbarComponent,
     NavOverlayComponent,
-    CameraCaptureComponent
+    CameraCaptureComponent,
+    CameraComponent
   ],
   imports: [
     BrowserModule,
