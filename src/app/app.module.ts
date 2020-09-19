@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavOverlayComponent } from './components/nav-overlay/nav-overlay.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
