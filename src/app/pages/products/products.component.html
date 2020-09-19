@@ -1,14 +1,14 @@
 <oho-navbar></oho-navbar>
 <div class="img-wrapper">
-  <img [src]="product.image" alt="">
+  <img *ngIf="product" [src]="product.image" alt="">
   <div class="information">
-    <span class="price">{{ product.price.toFixed(2) }} Fr.</span>
-    <h1>{{ product.name }}</h1>
-    <h2>{{ product.description }}</h2>
-    <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product.ingredients }}</p></span>
+    <span class="price">{{ product?.price?.toFixed(2) }} Fr.</span>
+    <h1>{{ product?.name }}</h1>
+    <h2>{{ product?.description }}</h2>
+    <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product?.ingredients }}</p></span>
     <div class="allergens">
-      <div *ngIf="product.allergens.length > 0; else noAllergens">
-        <p *ngFor="let allergen of product.allergens">{{ allergen.name }}</p>
+      <div *ngIf="product?.allergenText; else noAllergens">
+        <p >{{ product?.allergenText }}</p>
       </div>
       <ng-template #noAllergens>
         <div style="margin-right: 10px;">
@@ -19,7 +19,26 @@
     </div>
     <div class="categories">
       <i class="fal fa-bookmark"></i>
-
+      <div class="cat">
+        <mat-chip-list class="chips">
+          <mat-chip
+            *ngFor="let category of product?.categories"
+            color="secondary">
+          {{ category.name }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
     </div>
+    <span class="health">
+      <i class="fal fa-heartbeat"></i>Gesundheit
+    </span>
+    <p>Allergien die das Produkt verursacht. Inhalte die Ihre Allergien hervorrufen werden rot gekennzeichnet.</p>
+    <div *ngFor="let allergen of product?.allergens">
+      <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
+      <ng-template #notInAllergen>
+        <p>{{ allergen.name }}</p>
+      </ng-template>
+    </div>
+    <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
   </div>
 </div>

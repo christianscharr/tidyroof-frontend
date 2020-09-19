@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@fortawesome/fontawesome-pro/css/all.min.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+  font-family: 'nirmala';
+  src: url('assets/nirmala.ttf'); /* IE9 Compat Modes */
+}
+
+body { margin: 0; font-family: nirmala !important; }
