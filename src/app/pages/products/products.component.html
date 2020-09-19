@@ -7,8 +7,8 @@
     <h2>{{ product?.description }}</h2>
     <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product?.ingredients }}</p></span>
     <div class="allergens">
-      <div *ngIf="product.allergenText; else noAllergens">
-        <p >{{ product.allergenText }}</p>
+      <div *ngIf="product?.allergenText; else noAllergens">
+        <p >{{ product?.allergenText }}</p>
       </div>
       <ng-template #noAllergens>
         <div style="margin-right: 10px;">
@@ -22,7 +22,7 @@
       <div class="cat">
         <mat-chip-list class="chips">
           <mat-chip
-            *ngFor="let category of product.categories"
+            *ngFor="let category of product?.categories"
             color="secondary">
           {{ category.name }}
           </mat-chip>
@@ -32,7 +32,13 @@
     <span class="health">
       <i class="fal fa-heartbeat"></i>Gesundheit
     </span>
-    <p>Allergien die das Produkt verursacht</p>
-    <p *ngFor="let allergen of product.allergens">{{ allergen.name }}</p>
+    <p>Allergien die das Produkt verursacht. Inhalte die Ihre Allergien hervorrufen werden rot gekennzeichnet.</p>
+    <div *ngFor="let allergen of product?.allergens">
+      <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
+      <ng-template #notInAllergen>
+        <p>{{ allergen.name }}</p>
+      </ng-template>
+    </div>
+    <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
   </div>
 </div>
