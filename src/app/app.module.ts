@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavOverlayComponent } from './components/nav-overlay/nav-overlay.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { NavOverlayComponent } from './components/nav-overlay/nav-overlay.compon
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
