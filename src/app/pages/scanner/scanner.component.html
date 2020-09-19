@@ -1,3 +1,7 @@
-<scandit-sdk-barcode-picker [scanSettings]="settings"
-                            (scan)="onScan($event)"
-                            (error)="onError($event)"></scandit-sdk-barcode-picker>
+<oho-navbar></oho-navbar>
+<div class="scanner-wrapper">
+  <scandit-sdk-barcode-picker [scanSettings]="settings"
+                              (scan)="onScan($event)"
+                              (error)="onError($event)"></scandit-sdk-barcode-picker>
+
+</div>
