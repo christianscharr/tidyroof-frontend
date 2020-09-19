@@ -1,11 +1,15 @@
 {
   "name": "oho-app",
   "short_name": "OHO",
-  "theme_color": "#1976d2",
-  "background_color": "#ff4900",
+  "start_url": "/index.html",
+  "scope": ".",
   "display": "standalone",
-  "scope": "./",
-  "start_url": "./",
+  "orientation": "portrait-primary",
+  "background_color": "#ff4900",
+  "theme_color": "#ff4900",
+  "description": "OHO Web App",
+  "lang": "de-CH",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "assets/icons/android-72x72.png",
