@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,9 @@ import {Component} from '@angular/core';
   templateUrl: './camera-capture.component.html',
   styleUrls: ['./camera-capture.component.scss']
 })
-export class CameraCaptureComponent {
-
+export class CameraCaptureComponent implements OnInit{
+  public innerWidth: any;
+  ngOnInit() {
+    this.innerWidth = window.innerWidth;
+  }
 }
