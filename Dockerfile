@@ -8,6 +8,6 @@ RUN npm run build:prod
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.19
-COPY --from=build-stage /app/dist/m151-frontend/ /usr/share/nginx/html
+COPY --from=build-stage /app/dist/tidyroof-frontend/ /usr/share/nginx/html
 # Copy the default nginx.conf provided by tiangolo/node-frontend
 COPY nginx.conf /etc/nginx/conf.d/default.conf
