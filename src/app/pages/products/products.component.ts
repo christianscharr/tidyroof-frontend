@@ -11,6 +11,7 @@ import {environment} from "../../../environments/environment";
 })
 export class ProductsComponent implements OnInit {
   product: Product;
+  recommendations: any;
 
   constructor(private readonly productService: ProductService,
               private route: ActivatedRoute) { }
@@ -19,9 +20,7 @@ export class ProductsComponent implements OnInit {
 
     this.product = await this.productService.getProduct(this.route.snapshot.paramMap.get('productId'));
 
-    this.productService.getRecommendedProducts(this.route.snapshot.paramMap.get('productId')).then(recommendations => {
-      console.log('recommendations', recommendations)
-    })
+    this.recommendations = await this.productService.getRecommendedProducts(this.route.snapshot.paramMap.get('productId'));
   }
 
   isInAllergen(name: string) {

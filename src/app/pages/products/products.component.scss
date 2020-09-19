@@ -48,7 +48,6 @@
       margin-top: 16px;
       display: flex;
       position: relative;
-      justify-content: flex-end;
 
       &:after {
         position: absolute;
@@ -61,7 +60,6 @@
       }
 
       p {
-        text-align: right;
         display: inline-block;
       }
     }
@@ -122,6 +120,19 @@
 
     .is-in-allergen {
       color: #ca1719;
+    }
+
+    .recommendations {
+      display: block;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #ff4900;
+
+      i {
+        vertical-align: center;
+        font-size: 28px;
+      }
     }
   }
 

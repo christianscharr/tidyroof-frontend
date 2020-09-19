@@ -7,15 +7,15 @@
     <h2>{{ product?.description }}</h2>
     <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product?.ingredients }}</p></span>
     <div class="allergens">
-      <div *ngIf="product?.allergenText; else noAllergens">
-        <p >{{ product?.allergenText }}</p>
+      <i class="fal fa-allergies"></i>
+      <div *ngIf="product?.allergens.length > 0; else noAllergens">
+        <p>Dieses Produkt hat Allergene in sich. Sie finden in der Sektion Gesundheit alle vorhandenen Allergene.</p>
       </div>
       <ng-template #noAllergens>
         <div style="margin-right: 10px;">
           <p>Dieses Produkt hat keine Allergene. Falls Sie eine Allergie haben, dann müssen Sie sich keine sorgen machen.</p>
         </div>
       </ng-template>
-      <i class="fal fa-allergies"></i>
     </div>
     <div class="categories">
       <i class="fal fa-bookmark"></i>
@@ -40,5 +40,25 @@
       </ng-template>
     </div>
     <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
+    <span class="recommendations">
+      <i class="fal fa-salad"></i>Empfohlene Produkte
+    </span>
+    <p>
+      Wir empfehlen Ihnen hier einige Produkte, welche keine Allergen haben, auf diese Sie allergisch sind.
+      Schauen Sie sich diese Produkte mal an.
+    </p>
+    <div>
+      <mat-card *ngFor="let recommendation of recommendations" [routerLink]="['/product/', recommendation.id]">
+        <mat-card-header>
+          <img style="width: 50px" src="{{recommendation.image.original}}" [alt]="recommendation.name">
+
+          <mat-card-title>{{recommendation.name}}<br></mat-card-title>
+          <mat-card-subtitle *ngIf="recommendation.description; else noDescription">{{recommendation.description?.text}}</mat-card-subtitle>
+          <ng-template #noDescription>
+            <mat-card-subtitle>Keine Beschreibung</mat-card-subtitle>
+          </ng-template>
+        </mat-card-header>
+      </mat-card>
+    </div>
   </div>
 </div>
