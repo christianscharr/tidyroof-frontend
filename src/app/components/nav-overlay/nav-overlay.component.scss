@@ -1,0 +1,87 @@
+.overlay {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 60px;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+
+}
+
+.nav-item {
+  padding: 25px 8px;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: " ";
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: hsla(0, 0%, 18%, 0.05);
+  }
+}
+
+.overlay a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  transition: 0.3s;
+
+  &.active {
+    color: #ff6600;
+  }
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #ff6600;;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  display: block;
+  height: 20px;
+  width: 20px;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+  font-weight: lighter;
+  cursor: pointer;
+  padding: 0;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  padding-left: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.nav-trigger {
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

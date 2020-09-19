@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tidyroof-frontend';
+  private prevScrollpos = window.pageYOffset;
+
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
+    const currentScrollPos = window.pageYOffset;
+    if (this.prevScrollpos > currentScrollPos) {
+      document.getElementById('nav').style.top = '0';
+    } else {
+      document.getElementById('nav').style.top = '-80px';
+    }
+    this.prevScrollpos = currentScrollPos;
+  }
 }
