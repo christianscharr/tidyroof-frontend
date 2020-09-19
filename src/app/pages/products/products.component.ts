@@ -9,13 +9,18 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  product: any = { image: '' };
+  product: Product;
 
   constructor(private readonly productService: ProductService,
               private route: ActivatedRoute) { }
 
   async ngOnInit() {
+
     this.product = await this.productService.getProduct(this.route.snapshot.paramMap.get('productId'));
+
+    this.productService.getRecommendedProducts('205214100000').then(recommendations => {
+      console.log('recommendations', recommendations)
+    })
   }
 
 }
