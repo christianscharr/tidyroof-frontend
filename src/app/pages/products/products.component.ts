@@ -8,12 +8,18 @@ import {Product} from "../../types/migros-product.type";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  product: any = { image: '' };
+  product: Product;
 
   constructor(private readonly productService: ProductService) { }
 
   async ngOnInit() {
-    this.product = await this.productService.getProduct('120215100000');
+
+    this.product = await this.productService.getProduct('205214100000');
+
+    this.productService.getRecommendedProducts('205214100000').then(recommendations => {
+      console.log('recommendations', recommendations)
+    })
+
   }
 
 }

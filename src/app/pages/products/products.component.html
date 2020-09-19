@@ -1,11 +1,11 @@
 <oho-navbar></oho-navbar>
 <div class="img-wrapper">
-  <img [src]="product.image" alt="">
+  <img *ngIf="product" [src]="product.image" alt="">
   <div class="information">
-    <span class="price">{{ product.price.toFixed(2) }} Fr.</span>
-    <h1>{{ product.name }}</h1>
-    <h2>{{ product.description }}</h2>
-    <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product.ingredients }}</p></span>
+    <span class="price">{{ product?.price?.toFixed(2) }} Fr.</span>
+    <h1>{{ product?.name }}</h1>
+    <h2>{{ product?.description }}</h2>
+    <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product?.ingredients }}</p></span>
     <div class="allergens">
       <div *ngIf="product.allergenText; else noAllergens">
         <p >{{ product.allergenText }}</p>
