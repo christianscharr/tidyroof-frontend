@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../types/migros-product.type";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -10,10 +11,11 @@ import {Product} from "../../types/migros-product.type";
 export class ProductsComponent implements OnInit {
   product: any = { image: '' };
 
-  constructor(private readonly productService: ProductService) { }
+  constructor(private readonly productService: ProductService,
+              private route: ActivatedRoute) { }
 
   async ngOnInit() {
-    this.product = await this.productService.getProduct('120215100000');
+    this.product = await this.productService.getProduct(this.route.snapshot.paramMap.get('productId'));
   }
 
 }

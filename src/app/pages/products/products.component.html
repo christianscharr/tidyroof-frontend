@@ -20,8 +20,19 @@
     <div class="categories">
       <i class="fal fa-bookmark"></i>
       <div class="cat">
-        <p *ngFor="let category of product.categories">{{ category.name }}</p>
+        <mat-chip-list class="chips">
+          <mat-chip
+            *ngFor="let category of product.categories"
+            color="secondary">
+          {{ category.name }}
+          </mat-chip>
+        </mat-chip-list>
       </div>
     </div>
+    <span class="health">
+      <i class="fal fa-heartbeat"></i>Gesundheit
+    </span>
+    <p>Allergien die das Produkt verursacht</p>
+    <p *ngFor="let allergen of product.allergens">{{ allergen.name }}</p>
   </div>
 </div>

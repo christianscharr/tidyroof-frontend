@@ -87,10 +87,13 @@
         }
       }
 
-      p {
-        margin-right: 15px;
-        display: inline-block;
-        margin-block-end: 0;
+      ::ng-deep.mat-chip-list-wrapper {
+        margin-bottom: 16px;
+      }
+
+      ::ng-deep.mat-chip.mat-standard-chip {
+        background-color: #ff7d26;
+        color: white;
       }
     }
 
@@ -98,6 +101,19 @@
       font-size: 2.5rem;
       margin-right: 10px;
       color: #ff4900;
+    }
+
+    .health {
+      display: block;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #ff4900;
+
+      i {
+        vertical-align: center;
+        font-size: 28px;
+      }
     }
   }
 
