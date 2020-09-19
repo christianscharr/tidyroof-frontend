@@ -10,10 +10,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavOverlayComponent } from './components/nav-overlay/nav-overlay.component';
-import { CameraCaptureComponent } from './components/camera-capture/camera-capture.component';
 import { environment } from '../environments/environment';
 import {HttpClientModule} from "@angular/common/http";
-import { CameraComponent } from './pages/camera/camera.component';
 import { ProductsComponent } from './pages/products/products.component';
 
 
@@ -23,8 +21,6 @@ import { ProductsComponent } from './pages/products/products.component';
     HomeComponent,
     NavbarComponent,
     NavOverlayComponent,
-    CameraCaptureComponent,
-    CameraComponent,
     ProductsComponent
   ],
   imports: [
