@@ -1,1 +1,17 @@
-<p>products-list works!</p>
+<oho-navbar></oho-navbar>
+<div class="product-list-wrapper">
+
+  <mat-spinner *ngIf="loading">
+
+  </mat-spinner>
+  <div *ngIf="!loading">
+    <mat-card *ngFor="let product of products" [routerLink]="['/product/', product.id]">
+      <mat-card-header>
+        <img style="width: 50px" src="{{product.image}}" [alt]="product.name">
+
+        <mat-card-title><b>product:</b> {{product.name}} <br></mat-card-title>
+        <mat-card-subtitle><b>description:</b> {{product.description}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
