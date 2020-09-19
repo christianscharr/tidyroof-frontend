@@ -1,6 +1,8 @@
 export interface Product {
   id: string;
   name: string;
+  healthySugar: boolean;
+  healthySalt: boolean;
   description?: string;
   image: string;
   brand: string;

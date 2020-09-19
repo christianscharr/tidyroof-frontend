@@ -3,6 +3,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {ServiceWorkerModule} from '@angular/service-worker';
+import {ScanditSdkModule} from 'scandit-sdk-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MaterialModule} from './material/material.module';
@@ -16,6 +17,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import {PwaService} from "./services/pwa.service";
+import { ScannerComponent } from './pages/scanner/scanner.component';
 
 const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
 
@@ -28,6 +30,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     ProductsComponent,
     SettingsComponent,
     ProductsListComponent,
+    ScannerComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ScanditSdkModule.forRoot(environment.scandit, {engineLocation: 'assets/'}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
