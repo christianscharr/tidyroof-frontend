@@ -16,11 +16,11 @@ export class NavOverlayComponent implements OnInit {
   }
 
   openNav() {
-    //document.getElementById("myNav").style.display = "unset";
+    document.getElementById("myNav").style.display = "unset";
   }
 
   closeNav() {
-    //document.getElementById("myNav").style.display = "none";
+    document.getElementById("myNav").style.display = "none";
   }
 
 }
