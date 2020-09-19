@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {of, throwError} from 'rxjs';
+import {of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 import {Product} from '../../types/migros-product.type';
@@ -13,7 +13,7 @@ import {Product} from '../../types/migros-product.type';
 })
 export class ProductsListComponent implements OnInit {
   loading: boolean = true;
-  products: Product[];
+  products: Product[] = [];
 
   constructor(private router: Router, private httpClient: HttpClient) {
   }
@@ -23,8 +23,8 @@ export class ProductsListComponent implements OnInit {
       const file = history.state.file;
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
-      const endpoint = `${environment.apiUrl}/upload`;
-      
+      const endpoint = `${environment.apiUrl}/product/upload`;
+
       this.httpClient
         .post<Product[]>(endpoint, formData)
         .pipe(
