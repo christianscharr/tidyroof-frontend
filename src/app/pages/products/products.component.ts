@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
 
     this.product = await this.productService.getProduct(this.route.snapshot.paramMap.get('productId'));
 
-    this.productService.getRecommendedProducts('205214100000').then(recommendations => {
+    this.productService.getRecommendedProducts(this.route.snapshot.paramMap.get('productId')).then(recommendations => {
       console.log('recommendations', recommendations)
     })
   }
