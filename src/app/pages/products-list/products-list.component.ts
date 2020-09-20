@@ -56,16 +56,17 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         const formData = new FormData();
         formData.append('file', frame.blob, `screen.${frame.format}`);
 
-        this.httpClient.post(`${environment.apiUrl}/product/upload/speech`, formData).subscribe((responses: any[]) => {
+        this.httpClient.post(`${environment.apiUrl}/product/upload/speech`, formData).subscribe(async (responses: { fileId: string, productId: string }[]) => {
           console.log(responses);
           for (const response of responses) {
             console.log(response);
-            const blob = new Blob([response.audioOption], {type: 'audio/webm; codecs=opus'});
-            this.audioElementRef.nativeElement.src = window.URL.createObjectURL(blob);
+            const audio = new Audio(`${environment.apiUrl}/${response.fileId}.mp3`);
+            await audio.play();
+            await new Promise(res => audio.onended = res);
           }
 
         });
-      }, 5000);
+      }, 25000);
     } else {
       this.router.navigate(['/']);
     }
