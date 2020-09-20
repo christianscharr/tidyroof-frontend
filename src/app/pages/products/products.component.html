@@ -1,21 +1,30 @@
 <oho-navbar></oho-navbar>
-<div class="img-wrapper">
-  <img *ngIf="product" [src]="product.image" alt="">
+<div class="wrapper">
+  <div class="img-wrapper">
+    <img *ngIf="product" [src]="product.image" alt="">
+    <div class="stoplight" (click)="scroll(healthCheck)">
+      <div class="sugar" id="sugar"><i class="fal fa-candy-cane"></i></div>
+      <div class="salt" id="salt"><i class="fal fa-mortar-pestle"></i></div>
+      <div class="allergens" id="allergens"><i class="fal fa-allergies"></i></div>
+    </div>
+  </div>
   <div class="information">
     <span class="price">{{ product?.price?.toFixed(2) }} Fr.</span>
     <h1>{{ product?.name }}</h1>
-    <h2>{{ product?.description }}</h2>
+    <p [innerHTML]="product?.description"></p>
     <span class="ingredients"><i class="fal fa-clipboard-list"></i> <p>{{ product?.ingredients }}</p></span>
     <div class="allergens">
       <i class="fal fa-allergies"></i>
-      <div *ngIf="product?.allergens.length > 0; else noAllergens">
-        <p>Dieses Produkt hat Allergene in sich. Sie finden in der Sektion Gesundheit alle vorhandenen Allergene.</p>
+      <span>
+      <p>Diese Allergen sind in diesem Produkt. Wir markieren Allergen, welche Sie persönlich betreffen rot.</p>
+      <div *ngFor="let allergen of product?.allergens">
+        <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
+        <ng-template #notInAllergen>
+          <p>{{ allergen.name }}</p>
+        </ng-template>
       </div>
-      <ng-template #noAllergens>
-        <div style="margin-right: 10px;">
-          <p>Dieses Produkt hat keine Allergene. Falls Sie eine Allergie haben, dann müssen Sie sich keine sorgen machen.</p>
-        </div>
-      </ng-template>
+      <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
+        </span>
     </div>
     <div class="categories">
       <i class="fal fa-bookmark"></i>
@@ -29,37 +38,14 @@
         </mat-chip-list>
       </div>
     </div>
-    <span class="health">
-      <i class="fal fa-heartbeat"></i>Gesundheit
+    <span class="health" id="health-check" #healthCheck>
+      <i class="fal fa-heartbeat"></i>Health Check
     </span>
-    <p>Allergien die das Produkt verursacht. Inhalte die Ihre Allergien hervorrufen werden rot gekennzeichnet.</p>
-    <div *ngFor="let allergen of product?.allergens">
-      <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
-      <ng-template #notInAllergen>
-        <p>{{ allergen.name }}</p>
-      </ng-template>
-    </div>
-    <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
-    <span class="health-check">Health Check</span>
     <p>
       Beim Health Check, beurteilen wir, wie Gesund ein Produkt ist. Dazu benutzen wir einen Richtwert, der vom WHO definiert wurde.
       Wir gehen beim Health Check vom Salz und Zucker Gehalt aus.
     </p>
     <a href="https://www.who.int/mediacentre/infographic/salt-reduction/en/" target="_blank" class="health-check-link"><i class="fal fa-arrow-right"></i>Zum WHO Artikel</a>
-    <div class="check">
-      <div class="salt-level">
-        <p>Salz Level</p>
-        <i class="fal fa-check-circle checkmark" *ngIf="product?.healthySalt"></i>
-        <i class="fal fa-exclamation-circle exclamation" *ngIf="!product?.healthySalt"></i>
-      </div>
-      <div class="sugar-level">
-        <p>Zucker Level</p>
-        <i class="fal fa-check-circle checkmark" *ngIf="product?.healthySugar"></i>
-        <i class="fal fa-exclamation-circle exclamation" *ngIf="!product?.healthySugar"></i>
-      </div>
-    </div>
-    <span class="legend-check"><i class="fal fa-check-circle checkmark"></i> Produkt ist unter dem WHO Wert</span>
-    <span class="legend-exclamation"><i class="fal fa-exclamation-circle exclamation"></i> Produkt ist über dem WHO Wert daher mit Vorsicht geniessen</span>
     <span class="recommendations">
       <i class="fal fa-salad"></i>Empfohlene Produkte
     </span>
@@ -75,15 +61,13 @@
               Produkte
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-card *ngFor="let recommendation of recommendations" (click)="switchToProduct(recommendation.id)" class="card-product">
+          <mat-card *ngFor="let recommendation of recommendations" (click)="switchToProduct(recommendation.id)">
             <mat-card-header>
-              <img style="width: 50px" src="{{recommendation.image.original}}" [alt]="recommendation.name">
-              <mat-card-title>{{recommendation.name}}<br></mat-card-title>
-              <mat-card-subtitle *ngIf="recommendation.description; else noDescription">{{recommendation.description?.text}}</mat-card-subtitle>
-              <ng-template #noDescription>
-                <mat-card-subtitle>Keine Beschreibung</mat-card-subtitle>
-              </ng-template>
+              <mat-card-title>{{recommendation.name}}</mat-card-title>
             </mat-card-header>
+            <div class="card-img-wrapper">
+              <img src="{{recommendation.image.original}}" [alt]="recommendation.name">
+            </div>
           </mat-card>
         </mat-expansion-panel>
       </mat-accordion>

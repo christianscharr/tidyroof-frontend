@@ -6,4 +6,8 @@
   src: url('assets/nirmala.ttf'); /* IE9 Compat Modes */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body { margin: 0; font-family: nirmala !important; }

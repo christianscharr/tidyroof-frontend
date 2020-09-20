@@ -28,6 +28,8 @@ export class ProductsComponent implements OnInit {
       this.product = await this.productService.getProductByGtin(productId);
     }
 
+    this.setHealthData();
+
     this.productService.getRecommendedProducts(this.product.id).then(recommendations => {
       console.log('recommendations', recommendations);
     });
@@ -60,5 +62,43 @@ export class ProductsComponent implements OnInit {
     this.router.navigateByUrl(`/product/${id}`).then(() => {
       window.location.reload();
     });
+  }
+
+  private setHealthData() {
+    let count = 0;
+
+    if (this.product?.healthySugar) {
+      document.getElementById('sugar').style.borderColor = '#006d2f';
+      document.getElementById('sugar').style.color = '#006d2f';
+    } else {
+      document.getElementById('sugar').style.borderColor = 'goldenrod';
+      document.getElementById('sugar').style.color = 'goldenrod';
+    }
+
+    if (this.product?.healthySalt) {
+      document.getElementById('salt').style.borderColor = '#006d2f';
+      document.getElementById('salt').style.color = '#006d2f';
+    } else {
+      document.getElementById('salt').style.borderColor = 'goldenrod';
+      document.getElementById('salt').style.color = 'goldenrod';
+    }
+
+    this.product.allergens.forEach((allergen) => {
+      if (this.isInAllergen(allergen.code)) {
+        count++;
+      }
+    });
+
+    if (count === 0) {
+      document.getElementById('allergens').style.borderColor = '#006d2f';
+      document.getElementById('allergens').style.color = '#006d2f';
+    } else {
+      document.getElementById('allergens').style.borderColor = '#d22426';
+      document.getElementById('allergens').style.color = '#d22426';
+    }
+  }
+
+  scroll(healthCheck: HTMLSpanElement) {
+    healthCheck.scrollIntoView();
   }
 }
