@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async ngOnInit(): Promise<void> {
 
-    this.blindMode = Boolean(localStorage.getItem(environment.blindMode) ?? false);
+    this.blindMode = localStorage.getItem(environment.blindMode) === 'true';
 
     if (history.state.file !== undefined) {
       const file = history.state.file;

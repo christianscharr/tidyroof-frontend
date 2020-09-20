@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProduct('120215100000');
-    this.blindMode = Boolean(localStorage.getItem(environment.blindMode) ?? false);
+    this.blindMode = localStorage.getItem(environment.blindMode)  === 'true';
   }
 
   handleFileInput(filesToUpload: FileList): void {
