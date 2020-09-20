@@ -71,7 +71,11 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    navigator.mediaDevices.getUserMedia({video: true, audio: false})
+    navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: 'environment'
+      }, audio: false
+    })
       .then((stream) => {
         const video = this.videoElementRef.nativeElement;
         video.srcObject = stream;
