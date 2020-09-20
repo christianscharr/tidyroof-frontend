@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../types/migros-product.type';
@@ -14,7 +14,8 @@ export class ProductsComponent implements OnInit {
   recommendations: any;
 
   constructor(private readonly productService: ProductService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   async ngOnInit() {
@@ -54,4 +55,10 @@ export class ProductsComponent implements OnInit {
     'Gluten': 'ALLG_GLUTEN',
     'Eier': 'ALLG_EIER'
   };
+
+  switchToProduct(id: string) {
+    this.router.navigateByUrl(`/product/${id}`).then(() => {
+      window.location.reload();
+    });
+  }
 }

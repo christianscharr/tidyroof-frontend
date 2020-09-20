@@ -40,6 +40,26 @@
       </ng-template>
     </div>
     <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
+    <span class="health-check">Health Check</span>
+    <p>
+      Beim Health Check, beurteilen wir, wie Gesund ein Produkt ist. Dazu benutzen wir einen Richtwert, der vom WHO definiert wurde.
+      Wir gehen beim Health Check vom Salz und Zucker Gehalt aus.
+    </p>
+    <a href="https://www.who.int/mediacentre/infographic/salt-reduction/en/" target="_blank" class="health-check-link"><i class="fal fa-arrow-right"></i>Zum WHO Artikel</a>
+    <div class="check">
+      <div class="salt-level">
+        <p>Salz Level</p>
+        <i class="fal fa-check-circle checkmark" *ngIf="product?.healthySalt"></i>
+        <i class="fal fa-exclamation-circle exclamation" *ngIf="!product?.healthySalt"></i>
+      </div>
+      <div class="sugar-level">
+        <p>Zucker Level</p>
+        <i class="fal fa-check-circle checkmark" *ngIf="product?.healthySugar"></i>
+        <i class="fal fa-exclamation-circle exclamation" *ngIf="!product?.healthySugar"></i>
+      </div>
+    </div>
+    <span class="legend-check"><i class="fal fa-check-circle checkmark"></i> Produkt ist unter dem WHO Wert</span>
+    <span class="legend-exclamation"><i class="fal fa-exclamation-circle exclamation"></i> Produkt ist über dem WHO Wert daher mit Vorsicht geniessen</span>
     <span class="recommendations">
       <i class="fal fa-salad"></i>Empfohlene Produkte
     </span>
@@ -48,17 +68,25 @@
       Schauen Sie sich diese Produkte mal an.
     </p>
     <div>
-      <mat-card *ngFor="let recommendation of recommendations" [routerLink]="['/product/', recommendation.id]">
-        <mat-card-header>
-          <img style="width: 50px" src="{{recommendation.image.original}}" [alt]="recommendation.name">
-
-          <mat-card-title>{{recommendation.name}}<br></mat-card-title>
-          <mat-card-subtitle *ngIf="recommendation.description; else noDescription">{{recommendation.description?.text}}</mat-card-subtitle>
-          <ng-template #noDescription>
-            <mat-card-subtitle>Keine Beschreibung</mat-card-subtitle>
-          </ng-template>
-        </mat-card-header>
-      </mat-card>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Produkte
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-card *ngFor="let recommendation of recommendations" (click)="switchToProduct(recommendation.id)" class="card-product">
+            <mat-card-header>
+              <img style="width: 50px" src="{{recommendation.image.original}}" [alt]="recommendation.name">
+              <mat-card-title>{{recommendation.name}}<br></mat-card-title>
+              <mat-card-subtitle *ngIf="recommendation.description; else noDescription">{{recommendation.description?.text}}</mat-card-subtitle>
+              <ng-template #noDescription>
+                <mat-card-subtitle>Keine Beschreibung</mat-card-subtitle>
+              </ng-template>
+            </mat-card-header>
+          </mat-card>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
 </div>
