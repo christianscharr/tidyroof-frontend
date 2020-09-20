@@ -45,6 +45,10 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         .subscribe((data) => {
           this.loading = false;
           this.products = data;
+
+          if (data === null || data.length < 1) {
+            this.router.navigate(['/scanner']);
+          }
         });
     } else if (this.blindMode) {
       this.intervalId = setInterval(() => {

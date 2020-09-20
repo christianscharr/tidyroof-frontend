@@ -1,5 +1,14 @@
 <oho-navbar></oho-navbar>
 <div class="scanner-wrapper">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Kein Produkt gefunden</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Leider konnte auf dem Schnappschuss kein dem System bekanntes Produkt gefunden werden.
+      Bitte versuchen Sie die gewünschten Produkte einzeln über den Barcode zu scannen.
+    </mat-card-content>
+  </mat-card>
   <scandit-sdk-barcode-picker [scanSettings]="settings"
                               (scan)="onScan($event)"
                               (error)="onError($event)"></scandit-sdk-barcode-picker>
