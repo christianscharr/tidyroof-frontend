@@ -9,11 +9,11 @@
     <div class="allergens">
       <i class="fal fa-allergies"></i>
       <div *ngIf="product?.allergens.length > 0; else noAllergens">
-        <p>Dieses Produkt hat Allergene in sich. Sie finden in der Sektion Gesundheit alle vorhandenen Allergene.</p>
+        <p>Dieses Produkt enthält Allergene. Eine Übersicht darüber erhalten Sie in der Sektion "Gesundheit".</p>
       </div>
       <ng-template #noAllergens>
         <div style="margin-right: 10px;">
-          <p>Dieses Produkt hat keine Allergene. Falls Sie eine Allergie haben, dann müssen Sie sich keine sorgen machen.</p>
+          <p>Dieses Produkt enthält keine Allergene.</p>
         </div>
       </ng-template>
     </div>
@@ -32,14 +32,14 @@
     <span class="health">
       <i class="fal fa-heartbeat"></i>Gesundheit
     </span>
-    <p>Allergien die das Produkt verursacht. Inhalte die Ihre Allergien hervorrufen werden rot gekennzeichnet.</p>
+    <p>Im Pordukt enthaltene Allergene (für Sie kritische, werden rot gekennzeichnet)</p>
     <div *ngFor="let allergen of product?.allergens">
       <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
       <ng-template #notInAllergen>
         <p>{{ allergen.name }}</p>
       </ng-template>
     </div>
-    <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
+    <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keinerlei Allergene.</p>
     <span class="health-check">Health Check</span>
     <p>
       Beim Health Check, beurteilen wir, wie Gesund ein Produkt ist. Dazu benutzen wir einen Richtwert, der vom WHO definiert wurde.
@@ -64,8 +64,7 @@
       <i class="fal fa-salad"></i>Empfohlene Produkte
     </span>
     <p>
-      Wir empfehlen Ihnen hier einige Produkte, welche keine Allergen haben, auf diese Sie allergisch sind.
-      Schauen Sie sich diese Produkte mal an.
+      Vergleichbare Produkte welche keine für Sie relevanten Allergene enthalten:
     </p>
     <div>
       <mat-accordion>
