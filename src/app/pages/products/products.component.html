@@ -16,7 +16,7 @@
     <div class="allergens">
       <i class="fal fa-allergies"></i>
       <span>
-          <p>Im Pordukt enthaltene Allergene (für Sie kritische, werden rot gekennzeichnet)</p>
+          <p>Im Produkt enthaltene Allergene (für Sie kritische, werden rot gekennzeichnet)</p>
     <div *ngFor="let allergen of product?.allergens">
       <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
       <ng-template #notInAllergen>
