@@ -14,9 +14,7 @@
     </mat-card>
   </div>
 
-  <!--  <div id="app" *ngIf="blindMode">-->
-  <video id="webcam" #video autoplay playsinline width="640" height="480"></video>
-  <canvas id="canvas" #canvas class="d-none"></canvas>
-  <audio id="audio" #audio></audio>
-  <!--  </div>-->
+  <div id="app" *ngIf="blindMode">
+    <video id="webcam" #video autoplay playsinline width="100%" height="auto"></video>
+  </div>
 </div>

@@ -21,9 +21,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private router: Router, private httpClient: HttpClient) {
   }
 
-  @ViewChild('video', {static: true}) videoElementRef: ElementRef;
-  @ViewChild('canvas', {static: true}) canvasElementRef: ElementRef;
-  @ViewChild('audio', {static: true}) audioElementRef: ElementRef;
+  @ViewChild('video') videoElementRef: ElementRef;
 
 
   async ngOnInit(): Promise<void> {
