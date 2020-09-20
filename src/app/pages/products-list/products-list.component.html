@@ -1,7 +1,6 @@
 <oho-navbar></oho-navbar>
 <div class="product-list-wrapper">
-
-  <mat-spinner *ngIf="loading">
+  <mat-spinner *ngIf="loading && !blindMode">
 
   </mat-spinner>
   <div *ngIf="!loading">
@@ -14,4 +13,10 @@
       </mat-card-header>
     </mat-card>
   </div>
+
+  <!--  <div id="app" *ngIf="blindMode">-->
+  <video id="webcam" #video autoplay playsinline width="640" height="480"></video>
+  <canvas id="canvas" #canvas class="d-none"></canvas>
+  <audio id="audio" #audio></audio>
+  <!--  </div>-->
 </div>

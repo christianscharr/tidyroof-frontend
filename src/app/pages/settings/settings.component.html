@@ -16,5 +16,10 @@
         <mat-option *ngFor="let allergen of allergenList" [value]="allergen">{{allergen}}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <section>
+      <mat-checkbox color="warn" (change)="onBlindChange($event)">Blind Mode</mat-checkbox>
+    </section>
+
   </mat-card-content>
 </mat-card>

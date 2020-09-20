@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {environment} from "../../../environments/environment";
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +13,8 @@ export class SettingsComponent implements OnInit {
 
   allergenList: string[] = ['Haselnüsse', 'Sojabohnen', 'Milch | Laktose', 'Schwefeldioxid | Sulfite', 'Nüsse', 'Gluten', 'Eier'];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     const allergensTemp = localStorage.getItem(environment.allergens);
@@ -24,8 +25,12 @@ export class SettingsComponent implements OnInit {
   }
 
   onChange() {
-    this.allergens.valueChanges.subscribe( () => {
+    this.allergens.valueChanges.subscribe(() => {
       localStorage.setItem(environment.allergens, JSON.stringify(this.allergens.value));
     });
+  }
+
+  onBlindChange(event) {
+    localStorage.setItem(environment.blindMode, event.checked);
   }
 }
