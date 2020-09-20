@@ -6,9 +6,10 @@
   <div *ngIf="!loading">
     <mat-card *ngFor="let product of products" [routerLink]="['/product/', product.id]">
       <mat-card-header>
-        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-title>{{product.name}} <br></mat-card-title>
+        <mat-card-subtitle>{{product.description | truncate : 100 : true : '...' }}</mat-card-subtitle>
+        <div mat-card-avatar class="product-list-image" style="width: 50px;" [style.backgroundImage]="'url(' + product.image + ')'"></div>
       </mat-card-header>
-      <img src="{{product.image}}" [alt]="product.name">
     </mat-card>
   </div>
 

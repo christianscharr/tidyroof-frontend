@@ -19,6 +19,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import {PwaService} from "./services/pwa.service";
 import { ScannerComponent } from './pages/scanner/scanner.component';
+import {TruncatePipe} from "./truncate.pipe";
 
 const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
 
@@ -32,6 +33,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     SettingsComponent,
     ProductsListComponent,
     ScannerComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
