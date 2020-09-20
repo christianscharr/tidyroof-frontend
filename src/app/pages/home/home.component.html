@@ -1,14 +1,23 @@
 <div class="wrapper">
   <div class="title">
     <img src="../../../assets/logo.png" alt="logo">
-    <p>ah to oho in a few clicks</p>
+    <p>ah to oho in a single snap</p>
   </div>
 
-    <input type="file" name="file" accept="image/*;capture=camera" (change)="handleFileInput($event.target.files)" id="file" style="visibility: hidden">
-    <label for="file" class="camera" >
+  <ng-template [ngIf]="!blindMode">
+    <input type="file" name="file" accept="image/*" capture="environment" (change)="handleFileInput($event.target.files)"
+           id="file" style="visibility: hidden">
+    <label for="file" class="camera">
       <i class="fal fa-camera"></i>
-      <p>press to scan</p>
+      <p>*snap*</p>
     </label>
+  </ng-template>
+  <ng-template [ngIf]="blindMode">
+    <div class="camera" [routerLink]="['/products-list']">
+      <i class="fal fa-camera"></i>
+      <p>Starte Blindenmodus</p>
+    </div>
+  </ng-template>
 
   <div class="navigation">
     <i class="fal fa-home"></i>

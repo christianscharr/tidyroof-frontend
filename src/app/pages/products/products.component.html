@@ -16,14 +16,14 @@
     <div class="allergens">
       <i class="fal fa-allergies"></i>
       <span>
-      <p>Diese Allergen sind in diesem Produkt. Wir markieren Allergen, welche Sie persönlich betreffen rot.</p>
-      <div *ngFor="let allergen of product?.allergens">
-        <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
-        <ng-template #notInAllergen>
-          <p>{{ allergen.name }}</p>
-        </ng-template>
-      </div>
-      <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keine Stoffe die Allergien hervorrufen können.</p>
+          <p>Im Pordukt enthaltene Allergene (für Sie kritische, werden rot gekennzeichnet)</p>
+    <div *ngFor="let allergen of product?.allergens">
+      <p *ngIf="isInAllergen(allergen.code); else notInAllergen" class="is-in-allergen">{{ allergen.name }}</p>
+      <ng-template #notInAllergen>
+        <p>{{ allergen.name }}</p>
+      </ng-template>
+    </div>
+    <p *ngIf="product?.allergens.length === 0" class="safe">Dieses Produkt enthält keinerlei Allergene.</p>
         </span>
     </div>
     <div class="categories">
@@ -50,8 +50,7 @@
       <i class="fal fa-salad"></i>Empfohlene Produkte
     </span>
     <p>
-      Wir empfehlen Ihnen hier einige Produkte, welche keine Allergen haben, auf diese Sie allergisch sind.
-      Schauen Sie sich diese Produkte mal an.
+      Vergleichbare Produkte welche keine für Sie relevanten Allergene enthalten:
     </p>
     <div>
       <mat-accordion>

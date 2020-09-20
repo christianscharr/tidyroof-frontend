@@ -1,11 +1,11 @@
 <oho-navbar></oho-navbar>
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>Settings</mat-card-title>
+    <mat-card-title>Einstellungen</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <mat-form-field appearance="fill">
-      <mat-label>Allergens</mat-label>
+      <mat-label>Allergene</mat-label>
       <mat-select [formControl]="allergens" multiple>
         <mat-select-trigger>
           {{allergens.value ? allergens.value[0] : ''}}
@@ -16,5 +16,10 @@
         <mat-option *ngFor="let allergen of allergenList" [value]="allergen">{{allergen}}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <section>
+      <mat-checkbox [(ngModel)]="blind" color="warn" (change)="onBlindChange($event)">Blindenmodus aktivieren</mat-checkbox>
+    </section>
+
   </mat-card-content>
 </mat-card>

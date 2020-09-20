@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 import {ProductService} from '../../services/product.service';
 import {PwaService} from "../../services/pwa.service";
 
@@ -11,6 +12,8 @@ import {PwaService} from "../../services/pwa.service";
 })
 export class HomeComponent implements OnInit {
 
+  blindMode: boolean = false;
+
   constructor(
     private httpClient: HttpClient,
     private productService: ProductService,
@@ -20,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProduct('120215100000');
+    this.blindMode = localStorage.getItem(environment.blindMode)  === 'true';
   }
 
   handleFileInput(filesToUpload: FileList): void {
