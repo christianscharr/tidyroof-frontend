@@ -71,23 +71,28 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: 'environment'
-      }, audio: false
-    })
-      .then((stream) => {
-        const video = this.videoElementRef.nativeElement;
-        video.srcObject = stream;
-        video.play();
+    if (this.blindMode) {
+      navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: 'environment'
+        }, audio: false
       })
-      .catch((err) => {
-        console.log('An error occurred: ' + err);
-      });
+        .then((stream) => {
+          const video = this.videoElementRef.nativeElement;
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch((err) => {
+          console.log('An error occurred: ' + err);
+        });
+    }
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.intervalId);
+    if (this.blindMode) {
+
+      clearInterval(this.intervalId);
+    }
   }
 
 }
